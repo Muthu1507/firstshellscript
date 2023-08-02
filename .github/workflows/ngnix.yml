@@ -1,0 +1,20 @@
+name: Install Nginx on Self-hosted Runner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-nginx:
+    runs-on: self-hosted
+
+    steps:
+      - name: Update apt cache and install Nginx
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nginx
+
+      - name: Start Nginx
+        run: |
+          sudo service nginx start
