@@ -1,0 +1,20 @@
+name: Install Nginx
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-nginx:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update apt cache and install Nginx
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nginx
+
+      - name: Start Nginx
+        run: |
+          sudo service nginx start
